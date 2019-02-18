@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 5 (Урок 2)</title>
+    
+    <!--
+    Реализовать основные 4 арифметические операции в виде функций с двумя параметрами.
+    Обязательно использовать оператор return.
+    -->
+    <script type="text/javascript">
+        function sumNumber(a,b) {
+            return a + b;
+        }
+        
+        function minusNumber(a,b) {
+            return a - b;
+        }
+        
+        function multiplyNumber(a,b) {
+            return a * b;
+        }
+        
+        function divisionNumber(a,b) {
+            return a / b;
+        }
+        
+        var a = +prompt('Введите число переменной \'a\'');
+        while (isNaN(a)) {
+            a = +prompt('Вам необходимо ввести целое число!\nВведите число переменной \'a\'');
+        }
+        var b = +prompt('Введите число переменной \'b\'');
+        while (isNaN(b)) {
+            b = +prompt('Вам необходимо ввести целое число!\nВведите число переменной \'b\'');
+        }
+        
+        alert('1. Оператор \' + \':\n\n' + a + ' + ' + b + ' = ' + sumNumber(a,b));
+        alert('2. Оператор \' - \':\n\n' + a + ' - ' + b + ' = ' + minusNumber(a,b));
+        alert('3. Оператор \' * \':\n\n' + a + ' * ' + b + ' = ' + multiplyNumber(a,b));
+        alert('4. Оператор \' / \':\n\n' + a + ' / ' + b + ' = ' + divisionNumber(a,b));
+    </script>
+</head>
+
+<body> </body>
+
+</html>
