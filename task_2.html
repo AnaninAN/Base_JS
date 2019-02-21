@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 2 (Урок 3)</title>
+    <!--
+    Товары в корзине хранятся в массиве. Задачи:
+        a) Организовать такой массив для хранения товаров в корзине;
+        b) Организовать функцию countBasketPrice, которая будет считать стоимость корзины.
+    -->
+    <script type="text/javascript">
+        var price = [
+            ['shirt', 300, 2],
+            ['shorts', 600, 1],
+            ['dress', 1200, 3],
+            ['socks', 120, 5]
+            ]
+
+        function countBasketPrice(arr) {
+            var sum = 0;
+            for (var i = 0; i < arr.length; i++) {
+                sum += arr[i][1] * arr[i][2];
+            }
+            return sum;
+        }
+        
+        function descBasketPrice(arr) {
+            var str = '';
+            for (var i = 0; i < arr.length; i++) {
+                str += (i + 1) + '. ' + arr[i][0] + ' - ' + arr[i][1] + ' * ' + arr[i][2] + ' = ' + (arr[i][1] * arr[i][2]) + '\n';
+            }
+            return str;
+        }
+        
+        alert('В корзину добавлены следующие товары:\n' + descBasketPrice(price) + '\nОбщая стоимость составляет: ' + countBasketPrice(price));
+    </script>
+</head>
+
+<body> </body>
+
+</html>
