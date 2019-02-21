@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 1 (Урок 3)</title>
+    
+    <!--
+    С помощью цикла while вывести все простые числа в промежутке от 0 до 100.
+    -->
+    <script type="text/javascript">
+        var n = 100;
+        var i = 3;
+        var arr = [2];
+        
+        function primeNumber(num) {
+            var j = 2;
+            while (j < num) {
+                if (num % j++ == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        while (i <= n) {
+            if (primeNumber(i)) {;
+                arr.push(i);
+            }
+            i++;
+        }
+        
+        alert('Простые числа в промежутке от 0 до ' + n + ':\n\n' + arr.join(', '));
+    </script>
+</head>
+
+<body> </body>
+
+</html>
