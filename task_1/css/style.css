@@ -12,6 +12,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  box-shadow: 10px 10px 20px #333333;
 }
 .excelWhite,
 .excelBlack,
@@ -28,6 +29,70 @@ body {
   outline: 1px solid black;
 }
 .excelBlack {
-  background-color: black;
+  background-color: cyan;
   outline: 1px solid black;
+}
+.posAfter {
+  position: relative;
+  top: 4px;
+}
+.bR:after {
+  content: url(../img/bR.png);
+  position: relative;
+  top: 4px;
+}
+.wR:after {
+  content: url(../img/wR.png);
+  position: relative;
+  top: 4px;
+}
+.bN:after {
+  content: url(../img/bN.png);
+  position: relative;
+  top: 4px;
+}
+.wN:after {
+  content: url(../img/wN.png);
+  position: relative;
+  top: 4px;
+}
+.bB:after {
+  content: url(../img/bB.png);
+  position: relative;
+  top: 4px;
+}
+.wB:after {
+  content: url(../img/wB.png);
+  position: relative;
+  top: 4px;
+}
+.bQ:after {
+  content: url(../img/bQ.png);
+  position: relative;
+  top: 4px;
+}
+.wQ:after {
+  content: url(../img/wQ.png);
+  position: relative;
+  top: 4px;
+}
+.bK:after {
+  content: url(../img/bK.png);
+  position: relative;
+  top: 4px;
+}
+.wK:after {
+  content: url(../img/wK.png);
+  position: relative;
+  top: 4px;
+}
+.bP:after {
+  content: url(../img/bP.png);
+  position: relative;
+  top: 4px;
+}
+.wP:after {
+  content: url(../img/wP.png);
+  position: relative;
+  top: 4px;
 }

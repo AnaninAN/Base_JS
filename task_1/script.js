@@ -1,3 +1,63 @@
+function startFigures(i,j,$obj,size) {
+    //ладья
+    if (j == 1 || j == size) {
+        switch (i) {
+            case 1:
+                $obj.classList.add('bR');
+                break;
+            case size:
+                $obj.classList.add('wR');
+                break;
+        }
+            
+    }
+    //Конь
+    if (j == 2 || j == (size - 1)) {
+        switch (i) {
+            case 1:
+                $obj.classList.add('bN');
+                break;
+            case size:
+                $obj.classList.add('wN');
+                break;
+        }
+            
+    }
+    //Слон
+    if (j == 3 || j == (size - 2)) {
+        switch (i) {
+            case 1:
+                $obj.classList.add('bB');
+                break;
+            case size:
+                $obj.classList.add('wB');
+                break;
+        }
+            
+    }
+    //Ферзь
+    if (j == 4 && i == 1) {
+        $obj.classList.add('bQ');        
+    }
+    if (j == (size - 3) && i == size) {
+        $obj.classList.add('wQ');        
+    }
+    //Король
+    if (j == 5 && i == 1) {
+        $obj.classList.add('bK');        
+    }
+    if (j == (size - 4) && i == size) {
+        $obj.classList.add('wK');        
+    }
+    //Пешка
+    if (i == 2) {
+        $obj.classList.add('bP');        
+    }
+    if (i == size-1) {
+        $obj.classList.add('wP');        
+    }
+}
+
 function creatChessboard(size) {
     var nameCol = ['A','B','C','D','E','F','G','H'];
     
@@ -26,6 +86,8 @@ function creatChessboard(size) {
                 }
                 $excel.setAttribute('posX', i);
                 $excel.setAttribute('posY', nameCol[size - j]);
+                
+                startFigures(i,j,$excel,size)
             }
             $field.appendChild($excel);
         }
