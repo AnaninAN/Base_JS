@@ -1,65 +1,13 @@
-function startFigures(i,j,$obj,size) {
-    //ладья
-    if (j == 1 || j == size) {
-        switch (i) {
-            case 1:
-                $obj.classList.add('bR');
-                break;
-            case size:
-                $obj.classList.add('wR');
-                break;
-        }
-            
-    }
-    //Конь
-    if (j == 2 || j == (size - 1)) {
-        switch (i) {
-            case 1:
-                $obj.classList.add('bN');
-                break;
-            case size:
-                $obj.classList.add('wN');
-                break;
-        }
-            
-    }
-    //Слон
-    if (j == 3 || j == (size - 2)) {
-        switch (i) {
-            case 1:
-                $obj.classList.add('bB');
-                break;
-            case size:
-                $obj.classList.add('wB');
-                break;
-        }
-            
-    }
-    //Ферзь
-    if (j == 4 && i == 1) {
-        $obj.classList.add('bQ');        
-    }
-    if (j == (size - 3) && i == size) {
-        $obj.classList.add('wQ');        
-    }
-    //Король
-    if (j == 5 && i == 1) {
-        $obj.classList.add('bK');        
-    }
-    if (j == (size - 4) && i == size) {
-        $obj.classList.add('wK');        
-    }
-    //Пешка
-    if (i == 2) {
-        $obj.classList.add('bP');        
-    }
-    if (i == size-1) {
-        $obj.classList.add('wP');        
-    }
+function startFigures(i,j,$obj,bF,wF) {
+    if (i == 1) $obj.classList.add(bFigures.shift());
+    if (i == 8) $obj.classList.add(wFigures.shift());
+    if (i == 2) $obj.classList.add('bP');
+    if (i == 7) $obj.classList.add('wP');
 }
 
 function creatChessboard(size) {
-    var nameCol = ['A','B','C','D','E','F','G','H'];
+    bFigures = ['bR','bN','bB','bQ','bK','bB','bN','bR'];
+    wFigures = ['bR','bN','bB','bK','bQ','bB','bN','bR'];
     
     var $field = document.createElement('div');
     document.body.appendChild($field);
@@ -71,7 +19,7 @@ function creatChessboard(size) {
             if (i == 0 || i == size + 1) {
                 $excel.classList.add('nav');
                 if (j > 0 && j <= size) {
-                    $excel.textContent = nameCol[size - j];
+                    $excel.textContent = String.fromCharCode(j+65);
                 }
             } else if (j == 0 || j == size + 1) {
                 $excel.classList.add('nav');
@@ -79,15 +27,15 @@ function creatChessboard(size) {
                     $excel.textContent = i;
                 }
             } else {
-                if ((i + j) % 2 == 0) {
+                if ((i + j) % 2 == 0)    {
                     $excel.classList.add('excelWhite');
                 } else {
                     $excel.classList.add('excelBlack');
                 }
                 $excel.setAttribute('posX', i);
-                $excel.setAttribute('posY', nameCol[size - j]);
+                $excel.setAttribute('posY', String.fromCharCode(j+65));
                 
-                startFigures(i,j,$excel,size)
+                startFigures(i,j,$excel,bFigures,wFigures)
             }
             $field.appendChild($excel);
         }
