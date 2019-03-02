@@ -19,7 +19,7 @@ function creatChessboard(size) {
             if (i == 0 || i == size + 1) {
                 $excel.classList.add('nav');
                 if (j > 0 && j <= size) {
-                    $excel.textContent = String.fromCharCode(j+65);
+                    $excel.textContent = String.fromCharCode(73-j);
                 }
             } else if (j == 0 || j == size + 1) {
                 $excel.classList.add('nav');
@@ -33,7 +33,7 @@ function creatChessboard(size) {
                     $excel.classList.add('excelBlack');
                 }
                 $excel.setAttribute('posX', i);
-                $excel.setAttribute('posY', String.fromCharCode(j+65));
+                $excel.setAttribute('posY', String.fromCharCode(73-j));
                 
                 startFigures(i,j,$excel,bFigures,wFigures)
             }
