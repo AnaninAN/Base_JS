@@ -7,7 +7,7 @@ function startFigures(i,j,$obj,bF,wF) {
 
 function creatChessboard(size) {
     bFigures = ['bR','bN','bB','bQ','bK','bB','bN','bR'];
-    wFigures = ['bR','bN','bB','bK','bQ','bB','bN','bR'];
+    wFigures = ['wR','wN','wB','wK','wQ','wB','wN','wR'];
     
     var $field = document.createElement('div');
     document.body.appendChild($field);
