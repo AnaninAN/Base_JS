@@ -1,13 +1,15 @@
+var pathBigImg = 'img/catalog/big/';
+var pathSmallImg = 'img/catalog/small/';
+
 function createCatalog(products) {
     var $catalog = document.getElementById('catalog');
     var $posters = document.getElementById('posters');
-    var pathBigImg = 'img/catalog/big/';
-    var pathSmallImg = 'img/catalog/small/';
     for (var i = 0; i < products.length; i++) {
         var $poster = $posters.children[0].cloneNode(true);
         $poster.querySelector('.poster__footer__name').textContent = products[i].product.toUpperCase();
         $poster.querySelector('.poster__footer__price').textContent = products[i].price + ' rub';
-        $poster.querySelector('.bigImg').href = pathBigImg + products[i].product + '.jpg';
+        $poster.querySelector('.bigImg').href = pathBigImg + products[i].product + '1.jpg';
+        $poster.querySelector('.bigImg').name = products[i].countImg;
         $poster.querySelector('.smallImg').src = pathSmallImg + products[i].product + '.jpg';
         $poster.querySelector('.smallImg').alt = products[i].product;
         $poster.querySelector('.buy').setAttribute('id', 'buy_' + i);
@@ -145,32 +147,47 @@ function init() {
 
 function initClick() {
     var $container = document.getElementById('container');
+    var $myModal = document.getElementById('myModal');
     
     $container.addEventListener('click', handleButtonClick);
+    $myModal.addEventListener('click', handleLinkClick);
 }
 
 function handleButtonClick(event) {
     event.preventDefault();
     if (event.target.tagName === 'IMG') {
+        var $prev = document.getElementById('prev');
+        var $next = document.getElementById('next');
+        $prev.style.display = "none";
+        $next.style.display = "none";
+        
         var $a = event.target.parentElement;
         var path = $a.href;
         
         var $image = document.createElement('img');
-        $image.src = path;
+        $image.src = path
+        $image.alt = event.target.alt;
         
         var $preview = document.getElementById('preview');
         $preview.innerHTML = '';
         $preview.appendChild($image);
         
-        var modal = document.getElementById('myModal');
-        var span = document.getElementsByClassName("close")[0];
-        modal.style.display = "block";
-        span.onclick = function() {
-            modal.style.display = "none";
+        if (+$a.name > 1) {
+            $prev.name = $a.name;
+            $next.name = $a.name;
+            $prev.style.display = "block";
+            $next.style.display = "block";
+        }
+        
+        var $modal = document.getElementById('myModal');
+        var $span = document.getElementsByClassName("close")[0];
+        
+        $modal.style.display = "block";
+        $span.onclick = function() {
+            $modal.style.display = "none";
         }
     } else {
         if (event.target.tagName === 'BUTTON') {
-            console.log(event.target.id);
             if (event.target.id === 'removeCart')
                 cart = [];   
             else if (del(event.target.id)) {
@@ -183,13 +200,44 @@ function handleButtonClick(event) {
     }
 }
 
+function handleLinkClick(event) {
+    event.preventDefault();
+    if (event.target.tagName === 'A') {
+        var $image = document.getElementById('preview').children[0];
+        var k = +$image.src[$image.src.length-5];
+        var kmax = +event.target.name;
+        if (event.target.id === 'prev') {
+            if ((k - 1) === 0)
+                k = kmax;
+            else
+                k--;
+        }
+        if (event.target.id === 'next') {
+            if ((k + 1) > kmax)
+                k = 1;
+            else
+                k++;
+        }
+        
+        var path = pathBigImg + $image.alt + String(k) + '.jpg';
+        var $imageNew = document.createElement('img');
+        $imageNew.src = path;
+        $imageNew.alt = $image.alt;
+        
+        var $preview = document.getElementById('preview');
+        $preview.innerHTML = '';
+        $preview.appendChild($imageNew);
+        
+    }
+}
+
 var products = [
-    {product: 'shirt', price: 200},
-    {product: 'shorts', price: 700},
-    {product: 'jeans', price: 2500},
-    {product: 'blazer', price: 4000},
-    {product: 'jacket', price: 5500},
-    {product: 'sweater', price: 1500},
+    {product: 'shirt', price: 200, countImg: 2},
+    {product: 'shorts', price: 700, countImg: 2},
+    {product: 'jeans', price: 2500, countImg: 1},
+    {product: 'blazer', price: 4000, countImg: 1},
+    {product: 'jacket', price: 5500, countImg: 3},
+    {product: 'sweater', price: 1500, countImg: 1},
 ];
 
 var cart = [];
