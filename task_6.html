@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 6 (Урок 2)</title>
+    
+    <!--
+    Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation),
+    где arg1, arg2 – значения аргументов, operation – строка с названием операции.
+    В зависимости от переданного значения операции выполнить одну из арифметических операций (использовать функции из пункта 3)
+    и вернуть полученное значение (использовать switch).
+    -->
+    <script type="text/javascript">
+        function sumNumber(a,b) {
+            return a + b;
+        }
+        
+        function minusNumber(a,b) {
+            return a - b;
+        }
+        
+        function multiplyNumber(a,b) {
+            return a * b;
+        }
+        
+        function divisionNumber(a,b) {
+            return a / b;
+        }
+        
+        function mathOperation(arg1, arg2, operation) {
+            switch (operation) {
+                case '+':
+                    return sumNumber(arg1,arg2);
+                    break;
+                case '-':
+                    return minusNumber(arg1,arg2);
+                    break;
+                case '*':
+                    return multiplyNumber(arg1,arg2);
+                    break;
+                case '/':
+                    return divisionNumber(arg1,arg2);
+                    break;
+                default:
+                    flag = false;
+            }
+        }
+        
+        var a = +prompt('Введите число переменной \'a\'');
+        while (isNaN(a)) {
+            a = +prompt('Вам необходимо ввести целое число!\nВведите число переменной \'a\'');
+        }
+        var b = +prompt('Введите число переменной \'b\'');
+        while (isNaN(b)) {
+            b = +prompt('Вам необходимо ввести целое число!\nВведите число переменной \'b\'');
+        }
+        
+        var oper = prompt('Введите операцию из списка:\n\n1. +\n2. -\n3. *\n4. /');
+        var flag = true;
+        
+        mathOperation(a, b, oper);
+        if (flag) {
+            alert('Над числами ' + a + ' и ' + b + ' выбрана операция \' ' + oper + ' \'\n\n' + a + ' ' + oper + ' ' + b + ' = ' + mathOperation(a, b, oper));
+        } else {
+            alert('Такой операции нет в списке!');
+        }
+    </script>
+</head>
+
+<body>
+    
+</body>
+
+</html>
